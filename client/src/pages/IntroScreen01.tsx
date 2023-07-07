@@ -10,6 +10,7 @@ import {
   RootStackScreenProps,
 } from '../shared';
 import { useTheme } from '@react-navigation/native';
+import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 
 export const IntroScreen01 = ({
   navigation,
@@ -17,23 +18,34 @@ export const IntroScreen01 = ({
   const { colors } = useTheme();
   return (
     <SafeAreaView style={{ backgroundColor: colors.card, flex: 1 }}>
-      <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
+      <Animated.View
+        entering={FadeInUp.duration(1000).springify()}
+        style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
         <Artwork01 width={300} height={300} />
-      </View>
+      </Animated.View>
       <View style={{ padding: 24 }}>
-        <Text style={{ fontSize: 40, fontWeight: '800' }}>
+        <Animated.Text
+          entering={FadeInDown.duration(1000).springify()}
+          style={{ fontSize: 40, fontWeight: '800' }}>
           {INTRO_SCREEN_01.title}
-        </Text>
-        <Text style={{ opacity: 0.5, marginTop: 16, fontSize: 18 }}>
+        </Animated.Text>
+        <Animated.Text
+          entering={FadeInDown.delay(100).duration(1000).springify()}
+          style={{ opacity: 0.5, marginTop: 16, fontSize: 18 }}>
           {INTRO_SCREEN_01.description}
-        </Text>
-        <ScreenIndicator count={2} activeIndex={0} />
-        <View style={{ alignItems: 'center' }}>
+        </Animated.Text>
+        <Animated.View
+          entering={FadeInDown.delay(200).duration(1000).springify()}>
+          <ScreenIndicator count={2} activeIndex={0} />
+        </Animated.View>
+        <Animated.View
+          entering={FadeInDown.delay(300).duration(1000).springify()}
+          style={{ alignItems: 'center' }}>
           <PrimaryButton
             label="Next"
-            onPress={() => navigation.navigate('IntroScreen02')}
+            onPress={() => navigation.replace('IntroScreen02')}
           />
-        </View>
+        </Animated.View>
       </View>
     </SafeAreaView>
   );

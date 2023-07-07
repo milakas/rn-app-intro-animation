@@ -8,7 +8,8 @@ const RootStack = createNativeStackNavigator<RootStackParamList>();
 const RootNavigation = () => {
   return (
     <RootStack.Navigator>
-      <RootStack.Group screenOptions={{ headerShown: false }}>
+      <RootStack.Group
+        screenOptions={{ headerShown: false, animation: 'fade' }}>
         <RootStack.Screen name="IntroScreen01" component={IntroScreen01} />
         <RootStack.Screen name="IntroScreen02" component={IntroScreen02} />
         <RootStack.Screen name="LoginScreen" component={LoginScreen} />
