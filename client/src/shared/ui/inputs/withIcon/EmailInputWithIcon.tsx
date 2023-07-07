@@ -8,7 +8,12 @@ interface EmailInputProps extends Omit<InputProps, 'placeholder'> {}
 export const EmailInputWithIcon = ({ value, onChange }: EmailInputProps) => {
   return (
     <View style={{ position: 'relative', width: '100%' }}>
-      <Input placeholder="Your Email" value={value} onChange={onChange} />
+      <Input
+        autoCompleteEmail
+        placeholder="Your Email"
+        value={value}
+        onChange={onChange}
+      />
       <Icons
         name="email"
         size={24}

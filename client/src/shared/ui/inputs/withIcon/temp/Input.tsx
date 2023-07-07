@@ -1,17 +1,28 @@
-import { NativeSyntheticEvent, TextInput, TextInputChangeEventData } from 'react-native';
+import {
+  NativeSyntheticEvent,
+  TextInput,
+  TextInputChangeEventData,
+} from 'react-native';
 import theme from '../../../../theme';
 
 export type InputProps = {
   placeholder?: string;
   value?: string;
   onChange?: (e: NativeSyntheticEvent<TextInputChangeEventData>) => void;
+  autoCompleteEmail?: boolean;
 };
 
-const Input = ({ placeholder, value, onChange }: InputProps) => {
+const Input = ({
+  placeholder,
+  value,
+  onChange,
+  autoCompleteEmail,
+}: InputProps) => {
   return (
     <TextInput
       value={value}
       onChange={() => onChange}
+      keyboardType={autoCompleteEmail ? 'email-address' : 'default'}
       placeholder={placeholder}
       style={{
         paddingLeft: 48,
