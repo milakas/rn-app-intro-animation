@@ -1,12 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet, useColorScheme } from 'react-native';
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+  Theme,
+} from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import RootNavigation from './routes';
-import theme from '../shared/theme';
+import { useAppTheme } from '../shared/theme';
 
 const App = () => {
+  const theme = useAppTheme();
+
   return (
     <SafeAreaProvider style={styles.container}>
       <NavigationContainer theme={theme}>

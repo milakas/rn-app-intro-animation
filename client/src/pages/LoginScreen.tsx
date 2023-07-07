@@ -7,17 +7,17 @@ import {
   useWindowDimensions,
   Platform,
 } from 'react-native';
-import { useTheme } from '@react-navigation/native';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
 import Icons from '@expo/vector-icons/MaterialIcons';
 
 import { Artwork03, LOG_IN_SCREEN, RootStackScreenProps } from '../shared';
 import { AnimatedLoginForm } from '../features/login';
+import { useAppTheme } from '../shared/theme';
 
 export const LoginScreen = ({
   navigation,
 }: RootStackScreenProps<'LoginScreen'>) => {
-  const { colors } = useTheme();
+  const { colors } = useAppTheme();
   const { height } = useWindowDimensions();
 
   return (
@@ -54,12 +54,17 @@ export const LoginScreen = ({
         <View style={{ padding: 24 }}>
           <Animated.Text
             entering={FadeInDown.duration(1000).springify()}
-            style={{ fontSize: 40, fontWeight: '800' }}>
+            style={{ fontSize: 40, fontWeight: '800', color: colors.text }}>
             {LOG_IN_SCREEN.title}
           </Animated.Text>
           <Animated.Text
             entering={FadeInDown.delay(100).duration(1000).springify()}
-            style={{ opacity: 0.5, marginTop: 16, fontSize: 18 }}>
+            style={{
+              opacity: 0.5,
+              marginTop: 16,
+              fontSize: 18,
+              color: colors.text,
+            }}>
             {LOG_IN_SCREEN.description}
           </Animated.Text>
           <AnimatedLoginForm

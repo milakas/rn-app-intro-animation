@@ -1,6 +1,6 @@
-import { useTheme } from '@react-navigation/native';
 import { Text, TouchableOpacity } from 'react-native';
 import { PrimaryButtonProps } from './types';
+import { useAppTheme } from '../../../theme';
 
 export const PrimaryButton = ({
   onPress,
@@ -8,7 +8,7 @@ export const PrimaryButton = ({
   style,
   labelStyle,
 }: PrimaryButtonProps) => {
-  const { colors } = useTheme();
+  const { colors } = useAppTheme();
   return (
     <TouchableOpacity
       style={[
@@ -28,7 +28,7 @@ export const PrimaryButton = ({
           {
             fontSize: 16,
             fontWeight: '600',
-            color: '#fff',
+            color: colors.background,
           },
           labelStyle,
         ]}>

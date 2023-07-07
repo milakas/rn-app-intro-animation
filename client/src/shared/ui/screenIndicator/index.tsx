@@ -1,5 +1,5 @@
-import { useTheme } from '@react-navigation/native';
 import { FlatList, View } from 'react-native';
+import { useAppTheme } from '../../theme';
 
 export const ScreenIndicator = ({
   count,
@@ -8,7 +8,7 @@ export const ScreenIndicator = ({
   count: number;
   activeIndex: number;
 }) => {
-  const { colors } = useTheme();
+  const { colors } = useAppTheme();
 
   return (
     <View

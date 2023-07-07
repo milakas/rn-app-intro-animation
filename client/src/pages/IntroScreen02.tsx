@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, SafeAreaView, View, TouchableOpacity } from 'react-native';
-import { useTheme } from '@react-navigation/native';
+import { SafeAreaView, View, TouchableOpacity } from 'react-native';
 import Icons from '@expo/vector-icons/MaterialIcons';
 
 import {
@@ -11,11 +10,12 @@ import {
   RootStackScreenProps,
 } from '../shared';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
+import { useAppTheme } from '../shared/theme';
 
 export const IntroScreen02 = ({
   navigation,
 }: RootStackScreenProps<'IntroScreen02'>) => {
-  const { colors } = useTheme();
+  const { colors } = useAppTheme();
   return (
     <SafeAreaView style={{ backgroundColor: colors.card, flex: 1 }}>
       <Animated.View
@@ -39,12 +39,17 @@ export const IntroScreen02 = ({
       <View style={{ padding: 24 }}>
         <Animated.Text
           entering={FadeInDown.duration(1000).springify()}
-          style={{ fontSize: 40, fontWeight: '800' }}>
+          style={{ fontSize: 40, fontWeight: '800', color: colors.text }}>
           {INTRO_SCREEN_02.title}
         </Animated.Text>
         <Animated.Text
           entering={FadeInDown.delay(100).duration(1000).springify()}
-          style={{ opacity: 0.5, marginTop: 16, fontSize: 18 }}>
+          style={{
+            opacity: 0.5,
+            marginTop: 16,
+            fontSize: 18,
+            color: colors.text,
+          }}>
           {INTRO_SCREEN_02.description}
         </Animated.Text>
         <Animated.View

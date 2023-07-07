@@ -9,13 +9,13 @@ import {
   ScreenIndicator,
   RootStackScreenProps,
 } from '../shared';
-import { useTheme } from '@react-navigation/native';
 import Animated, { FadeInDown, FadeInUp } from 'react-native-reanimated';
+import { useAppTheme } from '../shared/theme';
 
 export const IntroScreen01 = ({
   navigation,
 }: RootStackScreenProps<'IntroScreen01'>) => {
-  const { colors } = useTheme();
+  const { colors } = useAppTheme();
   return (
     <SafeAreaView style={{ backgroundColor: colors.card, flex: 1 }}>
       <Animated.View
@@ -26,12 +26,17 @@ export const IntroScreen01 = ({
       <View style={{ padding: 24 }}>
         <Animated.Text
           entering={FadeInDown.duration(1000).springify()}
-          style={{ fontSize: 40, fontWeight: '800' }}>
+          style={{ fontSize: 40, fontWeight: '800', color: colors.text }}>
           {INTRO_SCREEN_01.title}
         </Animated.Text>
         <Animated.Text
           entering={FadeInDown.delay(100).duration(1000).springify()}
-          style={{ opacity: 0.5, marginTop: 16, fontSize: 18 }}>
+          style={{
+            opacity: 0.5,
+            marginTop: 16,
+            fontSize: 18,
+            color: colors.text,
+          }}>
           {INTRO_SCREEN_01.description}
         </Animated.Text>
         <Animated.View

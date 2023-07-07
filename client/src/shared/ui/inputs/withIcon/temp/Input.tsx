@@ -3,7 +3,7 @@ import {
   TextInput,
   TextInputChangeEventData,
 } from 'react-native';
-import theme from '../../../../theme';
+import { useAppTheme } from '../../../../theme';
 
 export type InputProps = {
   placeholder?: string;
@@ -18,6 +18,7 @@ const Input = ({
   onChange,
   autoCompleteEmail,
 }: InputProps) => {
+  const { colors } = useAppTheme();
   return (
     <TextInput
       value={value}
@@ -32,8 +33,8 @@ const Input = ({
         fontSize: 16,
         fontWeight: '500',
         borderRadius: 12,
-        color: theme.colors.text,
-        backgroundColor: theme.colors.background,
+        color: colors.text,
+        backgroundColor: colors.background,
       }}
     />
   );

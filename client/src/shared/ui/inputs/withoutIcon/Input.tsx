@@ -1,5 +1,5 @@
 import { TextInput } from 'react-native';
-import theme from '../../../theme';
+import { useAppTheme } from '../../../theme';
 
 export type InputProps = {
   placeholder?: string;
@@ -8,6 +8,8 @@ export type InputProps = {
 };
 
 const Input = ({ placeholder, value, onChange }: InputProps) => {
+  const theme = useAppTheme();
+
   return (
     <TextInput
       value={value}
